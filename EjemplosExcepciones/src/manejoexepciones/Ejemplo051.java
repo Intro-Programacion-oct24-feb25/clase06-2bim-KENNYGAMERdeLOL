@@ -18,6 +18,7 @@ public class Ejemplo051 {
         boolean bandera = true;
         
         while (bandera) {
+            
             try {
                 Scanner entrada = new Scanner(System.in);
                 System.out.println("Ingrese valor 1:");
