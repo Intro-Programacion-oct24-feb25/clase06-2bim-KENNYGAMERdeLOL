@@ -16,42 +16,47 @@ public class Ejemplo12 {
 
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
+      System.out.println("Ingrese cuantas operaciones quiere realizar");
+        int valor = entrada.nextInt();
+        double[] resultados = new double[valor];
+
         boolean bandera = true;
-        String valor;
+
         while (bandera) {
             try {
-                System.out.println("Ingrese valor 1 a operar: ");
-                int valor1 = entrada.nextInt(); // 200
-                System.out.println("Ingrese valor 2 a operar: ");
-                int valor2 = entrada.nextInt(); // 30
-                if (valor1 < 0 || valor2 < 0) {
-                    throw new Exception("Número negativos");
+                int valor1;
+                int valor2;
+                double resultado;
+
+                for (int i = 0; i < resultados.length; i++) {
+                    System.out.println("Ingrese el valor 1 a dividir");
+                    valor1 = entrada.nextInt();
+                    System.out.println("Ingrese el valor 2 a dividir");
+                    valor2 = entrada.nextInt();
+
+                 
+                    resultado = (double) valor1 / valor2;
+                    resultados[i] = resultado;
                 }
 
-                if (valor1 > 100) {
-                    throw new Exception("El valor de primer valor es muy alto");
+                for (int i = 0; i < resultados.length; i++) {
+                    System.out.printf("%.2f ", resultados[i]);
                 }
-                int resultado = valor1 / valor2;
-                System.out.printf("Resultado %s\n", resultado);
+                bandera = false;
 
             } catch (ArithmeticException e) {
                 System.out.printf("(ArithmeticException) Ocurrió una "
                         + "excepción %s\n", e);
+                entrada.nextLine();
             } catch (InputMismatchException e) {
                 System.out.printf("(InputMismatchException) Ocurrió una "
                         + "excepción %s\n", e);
+                entrada.nextLine();
             } catch (Exception e) {
                 System.out.printf("Ocurrió una excepción %s\n", e);
+                entrada.nextLine();
             }
-            entrada.nextLine();
-            System.out.println("Desea volver a ingresar los valores, ingrese "
-                    + "la palabra: si");
-            valor = entrada.nextLine(); // no
-
-            if (!valor.equals("si")) { //  Verdadero
-                bandera = false;
-            }
-
         }
     }
 }
+
